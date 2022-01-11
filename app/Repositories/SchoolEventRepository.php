@@ -29,7 +29,17 @@ class SchoolEventRepository
         $event->photo=$photoToStore;
         $event->save();
         $ntf = new EventNotification();
-        $ntf->sendNotification("Événement","Invitation a un événement","Evenement");
+        $ntf->sendNotification("Évènement","Invitation a un événement","Evenement");
+        return $event;
+    }
+    public static function update($name,$date,$description,$photoToStore,$id)
+    {
+        $event = SchoolEvent::findOrFail($id);
+        $event->name = $name;
+        $event->date = $date;
+        $event->description = $description;
+        $event->photo = $photoToStore;
+        $event->save();
         return $event;
     }
 

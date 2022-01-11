@@ -31,6 +31,22 @@ class SchoolEventController extends Controller
         $event = SchoolEventRepository::create($name,$date,$description,$photoToStore);
         return response()->json(['satus'=>'success','data'=>$event],200);
     }
+    public function update(Request $request,$id)
+    {
+        $name = $request->input("name");
+        $date = $request->input("date");
+        $description = $request->input("description");
+        if($request->hasFile("photo")){
+            $photoName = $request->file('photo')->getClientOriginalName();
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $photoToStore  = $photoName . '_' . time() . '.' . $extension;
+            $path =  $request->file("photo")->storeAs('EventsPhoto',$photoToStore);
+        }else{
+            $photoToStore= $request->input("photo");
+        }
+        $event = SchoolEventRepository::update($name,$date,$description,$photoToStore,$id);
+        return response()->json(['satus'=>'success','data'=>$event],200);
+    }
 
     public function destroy($id)
     {

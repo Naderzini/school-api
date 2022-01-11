@@ -25,6 +25,14 @@ class SubjectController extends Controller
         $subject = SubjectRepository::create($subjectName,$subjectCode,$hoursWeek);
         return response()->json(['satus'=>'success','data'=>$subject],200);
     }
+    public function update(Request $request,$id)
+    {
+        $subjectCode = $request->input("code");
+        $subjectName = $request->input("subject_name");
+        $hoursWeek = $request->input("hours_week");
+        $subject = SubjectRepository::update($subjectName,$subjectCode,$hoursWeek,$id);
+        return response()->json(['satus'=>'success','data'=>$subject],200);
+    }
 
     public function destroy($id)
     {

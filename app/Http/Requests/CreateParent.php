@@ -16,21 +16,21 @@ class CreateParent extends FormRequest
     public function rules()
     {
         return [
-            'cin' => 'required',
-            'first_name' => 'required|max:255',
+            'cin' => 'required|unique:child_parents',
+            'first_name' => 'required',
             'last_name' => 'required|max:225',
-            'email' => 'required',
+            'email' => 'required|unique:child_parents',
             'password' => 'required|min:6',
-            // 'adress' => 'required',
-            // 'phone' => 'required|min:8|max:8',
-            // 'occupation' => 'required',
-            // 'genre' => 'required',
+            'phone' => 'required|min:8|max:8',
+            'occupation' => 'required',
+            'genre' => 'required',
         ];
     }
     public function messages()
     {
         return [
             'email.unique' =>'cette email exiset déja',
-            'cin.unique' =>'ce cin exiset déja'];
+            'cin.unique' =>'ce cin exiset déja'
+        ];
     }
 }

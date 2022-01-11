@@ -46,7 +46,7 @@ class ChildParentRepository
             'email'=> $email,
             'password'=> $password
         ];
-        // Mail::send(new RegisterEmail($data))->to($email);
+         Mail::to($email)->send(new RegisterEmail($data));
         $parent->save();
         return $parent;
      }

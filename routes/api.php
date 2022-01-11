@@ -38,13 +38,14 @@ Route::group(['prefix' => 'admin','middleware' => 'auth:admin','checkrole:supera
     //*************Sujects Routs *************************************/
     Route::post('addSubject','Subject\SubjectController@create');
     Route::get('getAllSubjects','Subject\SubjectController@index');
-    Route::put('updateSubject/{id}','Subject\SubjectController@update');
+    Route::post('updateSubject/{id}','Subject\SubjectController@update');
     Route::delete('deleteSubject/{id}','Subject\SubjectController@destroy');
     Route::get('getSubjects','Subject\SubjectController@getSubjects');
     //*************SchoolEventes Route *******************************/
     Route::post('addEvent','SchoolEvent\SchoolEventController@create');
     Route::get('getAllEvents','SchoolEvent\SchoolEventController@index');
     Route::delete('deleteEvent/{id}','SchoolEvent\SchoolEventController@destroy');
+    Route::put('updateEvent/{id}','SchoolEvent\SchoolEventController@update');
     //*************Classes Route ************************************/
     Route::post('addClasse','Group\GroupController@create');
     Route::get('getAllClasses','Group\GroupController@index');

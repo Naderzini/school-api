@@ -23,7 +23,17 @@ class SubjectRepository
         $subject = new Subject();
         $subject->code = $subjectCode;
         $subject->name = $subjectName;
-        $subject->hours_week=$hoursWeek;
+        $subject->hours_week = $hoursWeek;
+        $subject->save();
+        return $subject;
+    }
+
+    public static function update($subjectName,$subjectCode,$hoursWeek,$id)
+    {
+        $subject = Subject::findOrFail($id);
+        $subject->code = $subjectCode;
+        $subject->name = $subjectName;
+        $subject->hours_week = $hoursWeek;
         $subject->save();
         return $subject;
     }
